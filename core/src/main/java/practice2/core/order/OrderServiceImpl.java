@@ -1,15 +1,22 @@
 package practice2.core.order;
 
 import practice2.core.discount.DiscountPolicy;
-import practice2.core.discount.FixDiscountPolicy;
 import practice2.core.member.Member;
 import practice2.core.member.MemberRepository;
-import practice2.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements  OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+   //하지만 OrderService 코드를 직접 바꿔야하게 됨 - 문제점 DIP,OCP 구체적인 클래스에 의존하게 된다.
+   //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+   //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+   //구체에 의존 X ,인터페이스에만 의존
+   private final MemberRepository memberRepository;
+   private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
