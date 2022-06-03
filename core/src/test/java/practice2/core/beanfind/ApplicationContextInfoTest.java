@@ -33,7 +33,7 @@ class ApplicationContextInfoTest {
 
             //사용
             if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION){
-                Object bean = ac.getBean(beanDefinitionName;
+                Object bean = ac.getBean(beanDefinitionName);
                 System.out.println("name=" + beanDefinitionName + " object=" +
                         bean);
             }
