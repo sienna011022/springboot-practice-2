@@ -35,12 +35,12 @@ public class ApplicationContextBasicFIndTest {
         Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
-    @Test
-    @DisplayName("실패테스트");
-
-    void findBeanByNameX() {
-        MemberService xxxxx = ac.getBean("xxxx", MemberService.class);
-        Assertions.assertThrows(NoSuchBeanDefinitionException.class,
-                () ->ac.getBean("xxxx",MemberService.class));
-    }
+//    @Test
+//    @DisplayName("실패테스트");
+//
+//    void findBeanByNameX() {
+//        MemberService xxxxx = ac.getBean("xxxx", MemberService.class);
+//        Assertions.assertThrows(NoSuchBeanDefinitionException.class,
+//                () ->ac.getBean("xxxx",MemberService.class));
+//    }
 }
