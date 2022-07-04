@@ -24,15 +24,15 @@ class ApplicationContextSameBeanFindText {
 
 
 
-    @Test
-    @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면 중복 오류 발생")
-
-    //NoUniqueBean Exception터짐
-    void findBeanByTypeDuplicate() {
-       ac.getBean(MemberRepository.class);
-        Assertions.assertThrows(NoUniqueBeanDefinitionException.class,
-                ()->ac.getBean(MemberRepository.class));
-    }
+//    @Test
+//    @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면 중복 오류 발생")
+//
+//    //NoUniqueBean Exception터짐
+//    void findBeanByTypeDuplicate() {
+//       ac.getBean(MemberRepository.class);
+//        Assertions.assertThrows(NoUniqueBeanDefinitionException.class,
+//                ()->ac.getBean(MemberRepository.class));
+//    }
 
     @Test
     @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면 이름으로 조회")

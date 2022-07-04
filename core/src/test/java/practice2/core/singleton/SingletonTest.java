@@ -13,6 +13,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SingletonTest {
 
+
+    @Test
+    @DisplayName("스프링 없는 순수한 DI 컨테이너")
+    void pureContainer(){
+        AppConfig appConfig = new AppConfig();
+
+        MemberService memberService1 = appConfig.memberService();
+        MemberService memberService2 = appConfig.memberService();
+
+        System.out.println("memberService1 = "+ memberService1);
+        System.out.println("memberService2 = "+ memberService2);
+
+        assertThat(memberService1).isNotSameAs(memberService2);
+
+    }
+
     @Test
     @DisplayName("싱글톤 패턴을 적용한 객체 사용")
     void singletonServiceTest() {
@@ -64,6 +80,15 @@ public class SingletonTest {
 
 
 
+    }
+    @Test
+    @DisplayName("Appconfig도 사실 스프링 빈에 등록된다.")
+    void configurationDeep(){
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        System.out.println("bean = "+ bean.getClass());
     }
 
     static class TestConfig{
